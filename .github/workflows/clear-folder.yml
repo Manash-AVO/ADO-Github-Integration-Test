@@ -9,6 +9,7 @@ on:
         options:
           - rejected
           - accepted
+          - both
         default: rejected
       older_than_days:
         description: Only delete files last changed more than N days ago (0 = delete everything)
@@ -34,19 +35,22 @@ jobs:
           set -euo pipefail
           [[ "$DAYS" =~ ^[0-9]+$ ]] || { echo "older_than_days must be a number"; exit 1; }
           cutoff=$(( $(date +%s) - DAYS * 86400 ))
-          git ls-files -z -- "$FOLDER/" > /tmp/files.lst
-          count=0
-          while IFS= read -r -d '' f; do
-            [ "$(basename "$f")" = ".gitkeep" ] && continue
-            ts=$(git log -1 --format=%ct -- "$f")
-            if [ "$DAYS" -eq 0 ] || [ "$ts" -lt "$cutoff" ]; then
-              git rm -q -- "$f"
-              count=$((count+1))
-            fi
-          done < /tmp/files.lst
-          echo "Removed $count file(s) from $FOLDER/"
-          mkdir -p "$FOLDER"
-          [ -f "$FOLDER/.gitkeep" ] || { touch "$FOLDER/.gitkeep"; git add "$FOLDER/.gitkeep"; }
+          if [ "$FOLDER" = "both" ]; then dirs="rejected accepted"; else dirs="$FOLDER"; fi
+          for dir in $dirs; do
+            git ls-files -z -- "$dir/" > /tmp/files.lst
+            count=0
+            while IFS= read -r -d '' f; do
+              [ "$(basename "$f")" = ".gitkeep" ] && continue
+              ts=$(git log -1 --format=%ct -- "$f")
+              if [ "$DAYS" -eq 0 ] || [ "$ts" -lt "$cutoff" ]; then
+                git rm -q -- "$f"
+                count=$((count+1))
+              fi
+            done < /tmp/files.lst
+            echo "Removed $count file(s) from $dir/"
+            mkdir -p "$dir"
+            [ -f "$dir/.gitkeep" ] || { touch "$dir/.gitkeep"; git add "$dir/.gitkeep"; }
+          done
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if ! git diff --cached --quiet; then
