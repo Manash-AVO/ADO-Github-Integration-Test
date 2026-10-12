@@ -1,0 +1,53 @@
+name: Clear folder
+
+on:
+  workflow_dispatch:
+    inputs:
+      folder:
+        description: Folder to clear
+        type: choice
+        options:
+          - rejected
+          - accepted
+        default: rejected
+      older_than_days:
+        description: Only delete files last changed more than N days ago (0 = delete everything)
+        type: string
+        default: "0"
+
+permissions:
+  contents: write
+
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Delete files
+        env:
+          FOLDER: ${{ inputs.folder }}
+          DAYS: ${{ inputs.older_than_days }}
+        run: |
+          set -euo pipefail
+          [[ "$DAYS" =~ ^[0-9]+$ ]] || { echo "older_than_days must be a number"; exit 1; }
+          cutoff=$(( $(date +%s) - DAYS * 86400 ))
+          git ls-files -z -- "$FOLDER/" > /tmp/files.lst
+          count=0
+          while IFS= read -r -d '' f; do
+            ts=$(git log -1 --format=%ct -- "$f")
+            if [ "$DAYS" -eq 0 ] || [ "$ts" -lt "$cutoff" ]; then
+              git rm -q -- "$f"
+              count=$((count+1))
+            fi
+          done < /tmp/files.lst
+          echo "Removed $count file(s) from $FOLDER/"
+          if [ "$count" -gt 0 ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -qm "Clear $FOLDER/ (older than $DAYS days)"
+            git pull -q --rebase
+            git push -q
+          fi
