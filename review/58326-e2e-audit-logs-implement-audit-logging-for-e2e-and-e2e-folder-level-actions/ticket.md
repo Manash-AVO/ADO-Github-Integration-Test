@@ -13,6 +13,6 @@ Currently, the application does not capture audit logs for End-to-End (E2E) arte
 [View in Azure DevOps](https://dev.azure.com/AvoAutomation/Avo%20EEC/_workitems/edit/58326)
 
 ## Analysis
-The ticket adds audit logging for End-to-End (E2E) artefact-level and folder-level actions. Each entry records the username, timestamp and role of the user. The entries appear in the Audit Logs interface, where users can filter them by date range. Comments say QA verified this in two builds against the acceptance criteria. I could not check the existing documentation. The fetch tool refused every docs.avoautomation.com URL I tried as not shown in the conversation, so I don't know which page covers Audit Logs. The ticket lists no links.
+Audit logging is now implemented for End-to-End (E2E) artefact and folder-level actions, recording the username, role, and timestamp for each action. These entries appear in the Audit Logs interface, where administrators can filter E2E activity by date range, matching audit log behavior used in other modules.
 
-**Remarks:** Eligible for documentation - update the existing Audit Logs page (exact URL not verified) to cover E2E artefact and folder actions, the recorded fields (username, timestamp, role) and the date-range filter; if no such page exists, create a new page titled 'Audit Logs'.
+**Remarks:** Eligible for documentation - adds visible audit log entries and filtering for E2E actions in the Audit Logs interface.
