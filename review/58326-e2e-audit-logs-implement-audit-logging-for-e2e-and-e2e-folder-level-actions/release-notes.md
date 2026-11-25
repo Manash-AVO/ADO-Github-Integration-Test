@@ -1,3 +1,3 @@
-### Improvement - Audit Logging for E2E Artefacts and Folders
+### Improvement - Audit Logs Now Track End-to-End Actions
 
-Audit logs are now captured for End-to-End (E2E) artefact-level and folder-level actions. Each log entry records the username, timestamp, and role of the user who performed the action, and is available through the Audit Logs interface, where entries can be filtered by date range.
+Actions on End-to-End items and folders are now recorded in Audit Logs. Each entry shows who performed the action, their role, and when it happened, and can be filtered by date range.
