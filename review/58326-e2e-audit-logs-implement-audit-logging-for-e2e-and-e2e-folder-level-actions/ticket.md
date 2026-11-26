@@ -1,7 +1,7 @@
 # E2E Audit Logs : Implement Audit Logging for E2E and E2E Folder-Level Actions - #58326
 
 **Type:** Prod Enhancement
-**Status:** New
+**Status:** In Progress
 **Assigned To:** Unassigned
 **Area Path:** Avo EEC
 **Iteration:** Avo EEC
@@ -13,9 +13,9 @@ Currently, the application does not capture audit logs for End-to-End (E2E) arte
 [View in Azure DevOps](https://dev.azure.com/AvoAutomation/Avo%20EEC/_workitems/edit/58326)
 
 ## Analysis
-Audit logging is now available for End-to-End (E2E) test actions, recording who created, renamed, added, or deleted test cases within E2E flows and folders, along with the username, timestamp, and role. Users can view these entries in the Audit Logs interface and filter them by date range, matching audit log behaviour already available in other modules.
+Audit logging is added for End-to-End (E2E) test flows and folders, recording actions like creating, renaming, adding, and deleting test cases along with the username, timestamp, and role of the user who performed them. These entries appear in the Audit Logs interface and can be filtered by date range, and an information icon now lets users view E2E flow and folder details directly from the design screen.
 
-**Remarks:** Eligible for documentation - adds visible audit log entries and filtering for E2E actions in the Audit Logs interface.
+**Remarks:** Eligible for documentation - adds visible audit log entries, filtering, and an information panel for E2E flows and folders.
 
 
 ## Planning
