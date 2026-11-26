@@ -1,7 +1,7 @@
 # E2E Audit Logs : Implement Audit Logging for E2E and E2E Folder-Level Actions - #58326
 
 **Type:** Prod Enhancement
-**Status:** In Progress
+**Status:** New
 **Assigned To:** Unassigned
 **Area Path:** Avo EEC
 **Iteration:** Avo EEC
