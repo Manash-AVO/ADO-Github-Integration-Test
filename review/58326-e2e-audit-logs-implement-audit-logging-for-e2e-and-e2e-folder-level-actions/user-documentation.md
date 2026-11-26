@@ -1,8 +1,8 @@
 # Viewing E2E Flow Details and Audit Logs
 
-The E2E Flow details help you understand the key information related to E2E Flow. You can view details such as the E2E Flow name, description, status, creation date, time, and the user who created it. 
+The E2E Flow details help you understand the key information related to E2E Flow. You can view details such as the E2E Flow name, description, status, creation date, time, and the user who created it.
 
-The E2E Flow audit logs track the history of changes made to E2E Flow folder or E2E Flow. Use this article to understand how to view E2E Flow details and audit logs.
+The E2E Flow audit logs track the history of changes made to E2E Flow folder or E2E Flow. Each audit log entry records the username, the timestamp, and the role of the user who performed the action. Use this article to understand how to view E2E Flow details and audit logs.
 
 ## Viewing E2E Flow Details
 
@@ -21,6 +21,18 @@ To view E2E Flow Details, perform the following actions:
 * **Created On**: The E2E Flow creation date and time.
 * **Created By**: The username of the person who created the E2E Flow.
 
+## Viewing E2E Folder Details
+
+You can also view details for an E2E Flow folder directly from the design screen.
+
+To view E2E Folder Details, perform the following actions:
+
+1. On the **Home** page, from **Projects** list, select required project.
+2. Select **Design Studio**.
+3. Select **Test Case**.
+4. On the **Test Case** page, expand the **E2E Flows** and select the E2E Flow folder for which you want to see the details.
+5. Select the **Information Panel** (**i**) icon. The **Details** tab opens and shows the folder information.
+
 ## Viewing E2E Flow Audit Logs
 
 To view E2E Flow Audit Logs, perform the following actions:
@@ -28,13 +40,11 @@ To view E2E Flow Audit Logs, perform the following actions:
 1. On the **Home** page, from **Projects** list, select required project.
 2. Select **Design Studio**.
 3. Select **Test Case**.
-4. On the **Test Case** page, expand the **E2E Flow** and select the E2E Flow for which you want to see the details.
+4. On the **Test Case** page, expand the **E2E Flow** and select the E2E Flow or E2E Flow folder for which you want to see the details.
 5. Select the **Information Panel** (**i**) icon. The **Details** tab opens.
 6. Select the **Audit Logs** tab.
 7. Select **Date Range** to view the actions performed between the specified dates.
-8. Expand the month to view the actions performed in the E2E flow.
-
-Each audit log entry shows the username of the person who performed the action, the date and time it occurred, and the role of that user.
+8. Expand the month to view the actions performed in the E2E flow. Each entry shows the username, the timestamp, and the role of the user who performed the action.
 
 ### E2E Flow Audit Log Inclusions
 
@@ -53,20 +63,3 @@ The following actions are captured in the E2E Flow audit logs:
 The following actions are currently not captured in the E2E Flow audit logs:
 
 * Reordering E2E Flow
-
-## Viewing E2E Folder Audit Logs
-
-The **Information Panel** (**i**) icon is also available on the **E2E Flows** folder, so you can review the actions performed at the folder level.
-
-To view E2E Folder Audit Logs, perform the following actions:
-
-1. On the **Home** page, from **Projects** list, select required project.
-2. Select **Design Studio**.
-3. Select **Test Case**.
-4. On the **Test Case** page, expand the **E2E Flows** and select the folder for which you want to see the audit logs.
-5. Select the **Information Panel** (**i**) icon. The **Details** tab opens.
-6. Select the **Audit Logs** tab.
-7. Select **Date Range** to view the actions performed between the specified dates.
-8. Expand the month to view the actions performed in the folder.
-
-Each audit log entry shows the username of the person who performed the action, the date and time it occurred, and the role of that user.
